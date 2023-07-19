@@ -4,6 +4,7 @@
 package com.jmfv.projectjpa.dao.test;
 
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -84,5 +85,24 @@ class DisqueraDAOImplTest {
 		
 		System.out.println("Disquera" + disquera.getDescripcion());
 	}
-
+	
+	@Test
+	void testconsultarByDescripcionJPQL() {
+		
+		Disquera disqueraConsultada = this.disqueraDAO.consultarByDescripcionJPQL("Elektrik");
+		
+		assertNotNull(disqueraConsultada);
+		
+		System.out.println("Disquera por descripcion: " + disqueraConsultada);
+	}
+	
+	@Test
+	void testConsultarByDescripcionNative() {
+		
+		Disquera disqueraConsultada = this.disqueraDAO.consultarByDescripcionNative("Elektrik");
+		
+		assertNotNull(disqueraConsultada);
+		
+		System.out.println("Disquera por descripcion: " + disqueraConsultada);
+	}
 }
